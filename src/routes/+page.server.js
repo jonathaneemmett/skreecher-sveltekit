@@ -43,7 +43,7 @@ export const actions = {
 		});
 
 		// redirect to profile page
-		throw redirect(303, `/profile/${user?.handle}`);
+		throw redirect(303, `/${user?.handle}`);
 	},
 	register: async ({ cookies, request }) => {
 		const data = await request.formData();
@@ -94,7 +94,7 @@ export const actions = {
 			});
 
 			// Redirect to profile page
-			throw redirect(303, `/profile/${handle}`);
+			throw redirect(303, `/${handle}`);
 		} else {
 			return invalid(500, { server: true });
 		}
