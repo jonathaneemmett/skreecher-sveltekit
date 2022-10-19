@@ -1,6 +1,12 @@
-<script></script>
+<script>
+	import Navbar from "../../../components/layout/Navbar.svelte";
 
-<main>
+</script>
+
+<header>
+    <Navbar />
+</header>
+<main class="content">
     <slot />
 </main>
 
@@ -9,8 +15,5 @@
         height: 100vh;
         background: #2f2830;
         display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
     }
 </style>
