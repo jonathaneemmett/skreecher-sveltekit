@@ -1,7 +1,16 @@
 <script>
-    import { enhance } from '$app/forms';
+    import Login from "../components/auth/Login.svelte";
+    import Register from "../components/auth/Register.svelte";
     export let form;
     export let data;
+
+    let showRegister = true;
+    let showLogin = false;
+
+    function toggleRegister() {
+        showRegister = !showRegister;
+        showLogin = !showLogin;
+    }
 
 </script>
 
@@ -14,49 +23,28 @@
         <h1>Say It Here!</h1>
         <h2>Join Skreecher Today!</h2>
         <div class="loginContainer">
-            <form action="?/register" method="POST" use:enhance>
-                <div>
-                    <input type="text" name="name" id="name" placeholder="Name">
-                    {#if form?.nameError}
-                        <p class="error">Name is required</p>
-                    {/if}
-                </div>
-                <div>
-                    <input type="email" name="email" id="email" placeholder="Email">
-                    {#if form?.emailError}
-                        <p class="error">Email is required</p>
-                    {/if}
-                </div>
-                <div>
-                    <input type="text" name="handle" id="handle" placeholder="@handle">
-                    {#if form?.handleError}
-                        <p class="error">Handle is required</p>
-                    {/if}
-                </div>
-                <div>
-                    <input type="password" name="password" id="password" placeholder="Password">
-                    {#if form?.passwordError}
-                        <p class="error">Password is required</p>
-                    {/if}
-                </div>
-                <div>
-                    <input type="password" name="password2" id="password2" placeholder="Confirm Password">
-                    {#if form?.password2Error}
-                        <p class="error">Passwords must match</p>
-                    {/if}
-                </div>
-                <div>
-                    <button type="submit">Register</button>
-                </div>
-                <div>
-                    <p>Already have an account? <a href="?/login">Login Here</a></p>
-                </div>
-            </form>
+            {#if showLogin}
+                <Login on:toggle={toggleRegister} form={form} data={data}/>
+            {/if}
+            {#if showRegister}
+                <Register on:toggle={toggleRegister} form={form} data={data}/>
+            {/if}
         </div>
     </div>
 </div>
 
 <style>
+    h1 {
+        font-size: 3rem;
+        font-weight: 900;
+        padding: 1.5rem 1rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+        font-weight: 900;
+        padding: 1.5rem 1rem;
+    }
     .leftSide {
         background-size: cover !important;
         background-repeat: no-repeat !important;
@@ -74,7 +62,7 @@
         font-size: 10rem;
         color: rgba(129, 205, 198, 1);
         font-style: italic;
-        font-family: 'Roboto', sans-serif;
+        font-family: 'Dancing Script', cursive;
     }
 
     .leftSide h2 {
@@ -95,69 +83,10 @@
         color: rgba(255, 255, 255, .8);
     }
 
-    h1 {
-        font-size: 3rem;
-        font-weight: 900;
-        padding: 1.5rem 1rem;
-    }
-
-    h2 {
-        font-size: 2rem;
-        font-weight: 900;
-        padding: 1.5rem 1rem;
-    }
-
-    div {
-        width: 100%;
-    }
-
-    form {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-    }
-
-    input {
-        width: 100%;
-        padding: 1rem;
-        margin: .5rem 0;
-        border: none;
-        border-radius: 5px;
-        color: rgba(255, 255, 255, .8);
-    }
-
-    button {
-        width: 100%;
-        padding: 1rem;
-        margin: 1rem 0;
-        border: none;
-        border-radius: 5px;
-        color: rgba(255, 255, 255, .8);
-        background: #2f2830;
-        font-weight: 900;
-    }
-
-    p {
-        font-size: 1.1rem;
-        font-weight: 900;
-        padding: 1rem 0;
-    }
-
-    a {
-        color:  rgba(179, 224, 220, 1);
-        font-weight: 900;
-        text-decoration: none;
-    }
-
-    a:hover {
-        color: rgba(129, 205, 198, 1)
-    }
-
     .loginContainer {
         padding: 1rem;
+        width: 100%;
     }
 
-    .error {
-        color: red;
-    }
+    
 </style>
