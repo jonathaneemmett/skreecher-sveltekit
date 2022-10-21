@@ -18,8 +18,8 @@ body {
 .card {
     width: 100%;
     max-width: 700px;
-    border: 1px solid rgba(129, 205, 198, 1);
-    border-radius: 8px;
+    border: 1px solid rgba(129, 205, 198, .3);
+    border-radius: 15px;
     margin: 15px auto;
     padding: 24px;
 }
@@ -52,12 +52,24 @@ body {
     padding: 1rem;
     transition: background-color 0.2s;
     font-size: 1.3rem;
+    border: 0;
+    outline: 0;
 }
 
 .btn-primary  {
     background: rgba(129, 205, 198, 1);
 }
 
+.btn-primary:hover {
+    background: rgba(129, 205, 198, 0.8);
+}
+
 .btn-rounded {
     border-radius: 50px;
+}
+
+.btn-skreetch {
+    width: 100px;
+    padding: .8rem;
+    font-size: 1rem;
 }

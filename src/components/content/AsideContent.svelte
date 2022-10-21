@@ -1,16 +1,24 @@
-<script></script>
+<script>
+    //Components
+    import Card from '../layout/Card.svelte';
+	import Search from '../layout/Search.svelte';
+
+    
+    let year = new Date().getFullYear();
+
+</script>
 
 <div style="width: 100%">
     <div class="aside-header">
-        <input type="text" placeholder="Search">
+        <Search />
     </div>
     <div class="aside-content">
-        <div class="card">
+        <Card>
             <h2>Whats Happening?</h2>
-        </div>
-        <div class="card">
+        </Card>
+        <Card>
             <h2>Who To Follow</h2>
-        </div>
+        </Card>
     </div>
     <div class="aside-footer">
         <div class="footer-nav">
@@ -21,7 +29,7 @@
             <a href="/">More</a>
         </div>
         <div class="footer-copy">
-            <p>© 2021 Skreecher, Inc.</p>
+            <p>© {year} Skreecher, Inc.</p>
         </div>
     </div>
 </div>
@@ -90,14 +98,5 @@
         font-weight: 600;
     }
 
-    input {
-        width: 100%;
-        height: 100%;
-        border: none;
-        border-bottom: 1px solid rgba(129, 205, 198, 0.2);
-        background: #2f2830;
-        color: rgba(129, 205, 198, 1);
-        font-size: 1.5rem;
-        padding: 0.5rem;
-    }
+    
 </style>

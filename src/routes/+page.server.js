@@ -2,8 +2,10 @@ import { invalid, redirect } from '@sveltejs/kit';
 import argon2 from 'argon2';
 import User from '$lib/models/User.js';
 
-export const load = async () => {
-	// TODO: check if user is logged in
+export const load = async ({ locals }) => {
+	if (locals?.user) {
+		throw redirect(302, `/${locals?.user?.handle}`);
+	}
 };
 
 export const actions = {

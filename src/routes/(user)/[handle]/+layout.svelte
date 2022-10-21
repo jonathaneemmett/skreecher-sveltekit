@@ -23,7 +23,7 @@ import Navigation from "../../../components/layout/Navigation.svelte";
         display: flex;
         width: 15rem;
         width: 100%;
-        border-right: 2px solid rgba(129, 205, 198, 1);
+        border-right: 1px solid rgba(129, 205, 198, .3);
     }
     main {
         height: 100vh;
@@ -38,6 +38,6 @@ import Navigation from "../../../components/layout/Navigation.svelte";
         display: flex;
         width: 15rem;
         width: 100%;
-        border-left: 2px solid rgba(129, 205, 198, 1);
+        border-left: 1px solid rgba(129, 205, 198, .3);
     }
 </style>

@@ -62,7 +62,7 @@
                 <span>More</span>
             </li>
             <li>
-                <button class="btn btn-primary btn-rounded">Skreetch</button>
+                <button class="btn btn-primary btn-rounded">Skreech</button>
             </li> 
         </ul>
     </div>
