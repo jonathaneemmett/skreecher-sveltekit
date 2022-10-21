@@ -1,14 +1,24 @@
 <script>
     import { page } from '$app/stores';
+    import { createEventDispatcher } from 'svelte';
+
+    const dispatch = createEventDispatcher();
+
+    let skreech = '';
+
+    function addSkreech() {
+        dispatch('addSkreech', skreech);
+        skreech = '';
+    }
 </script>
 
 <div class="skreech-main">
     <div class="skreech-content">
-        <input type="text" placeholder='Skreech it!' multiline="true">
+        <input type="text" placeholder='Skreech it!' multiline="true" bind:value={skreech}>
     </div>
     <div class="skreech-footer">
         <div><!-- <div>Future icons section</div> --></div>
-        <button class="btn btn-primary btn-rounded btn-skreetch">Skreech</button>
+        <button class="btn btn-primary btn-rounded btn-skreetch" on:click={() => addSkreech()}>Skreech</button>
     </div>
 </div>
 
