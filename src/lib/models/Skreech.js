@@ -10,9 +10,6 @@ const skreechSchema = new Schema(
 		content: {
 			type: String
 		},
-		time: {
-			type: String
-		},
 		replies: {
 			type: Number
 		},

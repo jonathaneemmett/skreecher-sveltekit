@@ -1,6 +1,10 @@
 <script>
     import {createEventDispatcher} from 'svelte';
+    import Modal from '../../layout/Modal.svelte';
+	import AddSkreech from './AddSkreech.svelte';
+
     export let skreech;
+    let showModal = false;
 
     const dispatch = createEventDispatcher();
 
@@ -16,8 +20,12 @@
         dispatch('reSkreech', skreech);
     }
 
+    function handleHandleShowModal() {
+        showModal = !showModal;
+    }
 
-    // Gets time difference between now and comment.createdAt
+
+    // Gets time difference between now and skreech.createdAt
  function timeSincePost(createdAt) {
     const date = new Date() - new Date(createdAt);
     const epoch = Math.round(date / 1000);
@@ -56,7 +64,7 @@
     </div>
     <div class="skreech-main">
         <div class="skreech-header">
-            <span>{skreech?.user?.name || 'Anonymous' }</span><span>{skreech?.user?.handle || '@anonymous'}</span><span>{timeSincePost(skreech?.time) || '0hr' }</span>
+            <span>{skreech?.user?.name || 'Anonymous' }</span><span>{skreech?.user?.handle || '@anonymous'}</span><span>{timeSincePost(skreech?.createdAt) || '0hr' }</span>
         </div>
         <div class="skreech-content">
             <p>{skreech?.content || 'No Content' }</p>
@@ -74,7 +82,14 @@
         </div>
     </div>
 </div>
-
+<Modal on:close={handleHandleShowModal} show={showModal}>
+    <span slot="head">
+        <h2>Add A Skreech</h2>
+    </span>
+    <span slot="body">
+        <AddSkreech />
+    </span>
+</Modal>
 <style>
     .skreech-item {
         width: 100%;

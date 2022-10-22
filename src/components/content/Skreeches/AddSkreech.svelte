@@ -86,10 +86,11 @@
         width: 100%;
         border: none;
         border-bottom: 1px solid rgba(129, 205, 198, 0.2);
-        background: rgba(0, 0, 0, 1);
+        background: none;
         color: rgba(129, 205, 198, 1);
         font-size: 1.5rem;
         padding: 0.5rem;
+        resize: none;
     }
 
     textarea:focus {

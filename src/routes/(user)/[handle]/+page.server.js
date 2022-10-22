@@ -8,12 +8,15 @@ export const load = async ({ locals }) => {
 
 	const skreeches = await Skreech.find({ user: locals.user.id }).populate(
 		'user',
-		'-password -token -createdAt -updatedAt'
+		'-password -token -updatedAt'
 	);
 
 	if (!skreeches) {
 		throw invalid(404, 'Skreeches not found');
 	}
+
+	// Sort skreeches by date
+	skreeches.sort((a, b) => b.createdAt - a.createdAt);
 
 	return {
 		skreeches: JSON.stringify(skreeches)
@@ -30,7 +33,6 @@ export const actions = {
 		const newSkreech = {
 			user: locals.user.id,
 			content: content,
-			time: new Date().toISOString(),
 			replies: 0,
 			reSkreeches: 0,
 			likes: 0

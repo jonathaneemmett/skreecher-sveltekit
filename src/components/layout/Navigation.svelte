@@ -1,6 +1,13 @@
 <script>
     import { page } from '$app/stores';
-    
+    import Modal from './Modal.svelte';
+    import AddSkreech from '../content/Skreeches/AddSkreech.svelte';
+
+    export let showModal = false;
+
+    function handleHandleShowModal() {
+        showModal = !showModal;
+    }
 </script>
 
 <nav>
@@ -62,7 +69,7 @@
                 <span>More</span>
             </li>
             <li>
-                <button class="btn btn-primary btn-rounded">Skreech</button>
+                <button class="btn btn-primary btn-rounded" on:click={() => showModal = !showModal}>Skreech</button>
             </li> 
         </ul>
     </div>
@@ -74,7 +81,14 @@
         </form> 
     </div>
 </nav>
-
+<Modal on:close={handleHandleShowModal} show={showModal}>
+    <span slot="head">
+        <h2>Add A Skreech</h2>
+    </span>
+    <span slot="body">
+        <AddSkreech />
+    </span>
+</Modal>
 <style>
     .nav-header {
         display: flex;
@@ -196,5 +210,12 @@
         align-items: center;
         justify-content: center;
         border: 1px solid rgba(255, 255, 255, 1);
+    }
+
+    h2 {
+        font-size: 2rem;
+        font-weight: 600;
+        letter-spacing: 1px;
+        color: #fff;
     }
 </style>
