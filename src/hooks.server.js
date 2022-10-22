@@ -18,6 +18,7 @@ export async function handle({ event, resolve }) {
 	// If user exists, add it to the event
 	if (user) {
 		event.locals.user = {
+			id: user._id.toString(),
 			name: user.name,
 			email: user.email,
 			handle: user.handle

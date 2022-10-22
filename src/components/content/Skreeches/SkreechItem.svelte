@@ -16,15 +16,47 @@
         dispatch('reSkreech', skreech);
     }
 
+
+    // Gets time difference between now and comment.createdAt
+ function timeSincePost(createdAt) {
+    const date = new Date() - new Date(createdAt);
+    const epoch = Math.round(date / 1000);
+    const seconds = epoch;
+    const minutes = Math.round(seconds / 60);
+    const hours = Math.round(minutes / 60);
+    const days = Math.round(hours / 24);
+    const weeks = Math.round(days / 7);
+    const months = Math.round(weeks / 4.35);
+    const years = Math.round(months / 12);
+
+    if (seconds < 5) {
+      return "now";
+    } else if (seconds < 60) {
+      return `${seconds}s ago`;
+    } else if (minutes < 60) {
+      return `${minutes}m ago`;
+    } else if (hours < 24) {
+      return `${hours}h ago`;
+    } else if (days < 7) {
+      return `${days}d ago`;
+    } else if (weeks < 4) {
+      return `${weeks}w ago`;
+    } else if (months < 12) {
+      return `${months}m ago`;
+    } else {
+      return `${years}y ago`;
+    }
+  };
+
 </script>
 
 <div class="skreech-item">
     <div class="skreech-avatar">
-        <img src={skreech?.avatar || 'https://via.placeholder.com/100/100'} alt="">
+        <img src={skreech?.user?.avatar || 'https://via.placeholder.com/100/100'} alt="">
     </div>
     <div class="skreech-main">
         <div class="skreech-header">
-            <span>{skreech?.name || 'Anonymous' }</span><span>{skreech?.handle || '@anonymous'}</span><span>{skreech?.time || '0hr' }</span>
+            <span>{skreech?.user?.name || 'Anonymous' }</span><span>{skreech?.user?.handle || '@anonymous'}</span><span>{timeSincePost(skreech?.time) || '0hr' }</span>
         </div>
         <div class="skreech-content">
             <p>{skreech?.content || 'No Content' }</p>
@@ -106,6 +138,12 @@
         line-height: 25px;
         font-size: 1.1rem;
         letter-spacing: 1px;
+    }
+
+    .skreech-content p {
+        display: block; 
+        max-width: 30vw; 
+        word-wrap:break-word !important;
     }
 
     .skreech-footer {

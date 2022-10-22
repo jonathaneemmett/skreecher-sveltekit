@@ -4,7 +4,7 @@ import Navigation from "../../../components/layout/Navigation.svelte";
 
 </script>
 
-<div style="display: grid; grid-template-columns: 3fr 5fr 3fr; ">
+<div style="display: flex">
     <aside class="leftAside">
         <Navigation />
     </aside>
@@ -21,7 +21,6 @@ import Navigation from "../../../components/layout/Navigation.svelte";
         height: 100vh;
         background: #2f2830;
         display: flex;
-        width: 15rem;
         width: 100%;
         border-right: 1px solid rgba(129, 205, 198, .3);
     }
@@ -36,7 +35,6 @@ import Navigation from "../../../components/layout/Navigation.svelte";
         height: 100vh;
         background: #2f2830;
         display: flex;
-        width: 15rem;
         width: 100%;
         border-left: 1px solid rgba(129, 205, 198, .3);
     }

@@ -13,4 +13,9 @@
         font-size: 1.5rem;
         padding: 0.5rem;
     }
+
+    input:focus {
+        outline: none;
+        border-bottom: 1px solid rgba(129, 205, 198, 1);
+    }
 </style>

@@ -1,28 +1,11 @@
 <script>
-    import { skreeches } from '$root/store';
-    import { page } from '$app/stores';
-    
-
+     import { page } from '$app/stores';
+    import { skreeches } from '../../../store.js'; 
     // Components
-	import AddSkreech from '../../../components/content/AddSkreech.svelte';
-	import SkreechItem from '../../../components/content/SkreechItem.svelte';
+	import AddSkreech from '../../../components/content/Skreeches/AddSkreech.svelte';
+	import SkreechItem from '../../../components/content/Skreeches/SkreechItem.svelte';
 
-       
-    function handleAddSkreech(e) {
-        let skreechObj = {
-            _id: $skreeches.length + 1,
-            user: $page?.data?.user?.name,
-            handle: $page?.data?.user?.handle,
-            content: e.detail,
-            likes: 0,
-            replies: 0,
-            reSkreeches: 0,
-            time: new Date().toLocaleString()
-        }
-
-        skreeches.update(skreeches => [...skreeches, skreechObj].sort((a, b) => b._id - a._id));
-
-    }
+    let data = [];
 
     function handleLike(e) {
         let skreech = e.detail;
@@ -41,13 +24,17 @@
         let index = $skreeches.findIndex(s => s._id === skreech._id);
         $skreeches[index].replies++;     
     }
+
+    $: $page?.data?.skreeches && skreeches.set(JSON.parse($page.data.skreeches));
 </script>
 
 <div>
     <h1>Home</h1>
-    <AddSkreech on:addSkreech={handleAddSkreech} />
+    <AddSkreech  />
     {#each $skreeches as skreech}
-        <SkreechItem {skreech} on:like={handleLike} on:reply={handleReply} on:reSkreech={handleReskreech} />
+        <SkreechItem skreech={skreech} on:like={handleLike} on:reskreech={handleReskreech} on:reply={handleReply} />
+        {:else}
+        <p style="color: #fff;">No skreeches yet</p>
     {/each}
 </div>
 
