@@ -1,7 +1,7 @@
 <script>
-    import {createEventDispatcher} from 'svelte';
+    import { createEventDispatcher } from 'svelte';
     import Modal from '../../layout/Modal.svelte';
-	import AddSkreech from './AddSkreech.svelte';
+	import SkreechForm from './SkreechForm.svelte';
 
     export let skreech;
     let showModal = false;
@@ -87,7 +87,7 @@
         <h2>Add A Skreech</h2>
     </span>
     <span slot="body">
-        <AddSkreech />
+        <SkreechForm />
     </span>
 </Modal>
 <style>
@@ -100,6 +100,10 @@
         padding: 1rem;
         border-top: 1px solid rgba(129, 205, 198, .2);
         border-bottom: 1px solid rgba(129, 205, 198, .2);
+    }
+
+    .skreech-item:hover {
+        background-color: rgba(129, 205, 198, .1);
     }
 
     .skreech-avatar {

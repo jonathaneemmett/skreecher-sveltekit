@@ -1,7 +1,7 @@
 <script>
     import { page } from '$app/stores';
     import Modal from './Modal.svelte';
-    import AddSkreech from '../content/Skreeches/AddSkreech.svelte';
+    import SkreechForm from '../content/Skreeches/SkreechForm.svelte';
 
     export let showModal = false;
 
@@ -86,7 +86,7 @@
         <h2>Add A Skreech</h2>
     </span>
     <span slot="body">
-        <AddSkreech />
+        <SkreechForm />
     </span>
 </Modal>
 <style>
